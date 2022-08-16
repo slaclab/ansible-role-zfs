@@ -4,8 +4,8 @@
     that:
       - zfs_pool.name is defined and zfs_pool.name is string
       - zfs_pool.vdev is defined and zfs_pool.vdev is string
-      - (zfs_pool.scrub | default(true) | bool) is boolean
-      - (zfs_pool.dont_enable_features | default(false) | bool) is boolean
+      - (zfs_pool.scrub | default(true) | bool) == ( zfs_pool.scrub | default(true))
+      - (zfs_pool.dont_enable_features | default(false) | bool) == zfs_pool.dont_enable_features | default(false)
       - (zfs_pool.properties | default({})) is mapping
       - (zfs_pool.filesystem_properties | default({})) is mapping
       - (zfs_pool.extra_import_options | default('')) is string
